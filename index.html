@@ -13,12 +13,16 @@
             --light: #f4f4f4;
         }
 
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
         body {
             margin: 0;
             font-family: 'Montserrat', sans-serif;
             background-color: var(--dark);
             color: var(--light);
-            scroll-behavior: smooth;
         }
 
         header {
@@ -28,7 +32,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1551135049-8a33b5883817?q=80&w=2070&auto=format&fit=crop'); /* Replace with a commie block photo */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://yugotour.com/wp-content/uploads/2017/12/td65wsqnw0nz.jpg'); 
             background-size: cover;
             background-attachment: fixed;
         }
@@ -44,15 +48,41 @@
             font-size: 1.2rem;
             letter-spacing: 2px;
             color: var(--accent);
+            margin-bottom: 30px;
+        }
+
+        .header-btns {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            color: white;
+            text-decoration: none;
+            border: 1px solid white;
+            padding: 12px 25px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .btn-accent {
+            border-color: var(--accent);
+            background: rgba(230, 57, 70, 0.1);
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
         }
 
         section {
-            padding: 100px 20px;
+            padding: 80px 20px;
             max-width: 1000px;
             margin: auto;
         }
 
-        /* Interactive Toggle Styles */
         .comparison-container {
             background: var(--grey);
             padding: 40px;
@@ -103,19 +133,25 @@
             color: #ccc;
         }
 
+        .archive-scroll {
+            background: #222;
+            height: 600px;
+            overflow-y: scroll;
+            padding: 30px;
+            border-radius: 5px;
+            border: 1px solid #444;
+        }
+
         footer {
             text-align: center;
             padding: 50px;
             font-size: 0.8rem;
             color: #666;
+            border-top: 1px solid #333;
         }
 
-        .qr-placeholder {
-            border: 2px dashed var(--accent);
-            padding: 20px;
-            margin-top: 20px;
-            display: inline-block;
-        }
+        hr { border: 0; border-top: 1px solid #444; margin: 20px 0; }
+        strong.q { color: var(--accent); }
     </style>
 </head>
 <body>
@@ -123,61 +159,142 @@
 <header>
     <h1>RESTORATION VS REFORM</h1>
     <p class="subtitle">POLAND & LATVIA IN THE FALL OF THE USSR</p>
-    <a href="#research" style="color:white; margin-top:30px; text-decoration:none;">[ EXPLORE ARCHIVE ]</a>
+    <div class="header-btns">
+        <a href="#research" class="btn">[ View Analysis ]</a>
+        <a href="#archives" class="btn btn-accent">[ Explore Archives ]</a>
+    </div>
 </header>
 
 <section id="research">
     <h2>Divergent Continuums</h2>
-    <p>How did legal status change the face of freedom? Explore the difference between a <b>Satellite State (Poland)</b> and an <b>Occupied Republic (Latvia)</b>.</p>
+    <p>Explore the core research findings between the <b>Satellite State (Poland)</b> and the <b>Occupied Republic (Latvia)</b>.</p>
     
     <div class="comparison-container">
         <div class="toggle-btns">
-            <button class="toggle-btn active" onclick="showPane('poland', this)">POLAND (REFORM)</button>
-            <button class="toggle-btn" onclick="showPane('latvia', this)">LATVIA (RESTORATION)</button>
+            <button class="toggle-btn active" onclick="showPane('poland', this, 'analysis')">POLAND (REFORM)</button>
+            <button class="toggle-btn" onclick="showPane('latvia', this, 'analysis')">LATVIA (RESTORATION)</button>
         </div>
 
-        <div id="poland" class="content-pane active">
+        <div id="poland-analysis" class="content-pane active analysis-pane">
             <h3>The Reformist Path</h3>
-            <p>Driven by the <b>Solidarity</b> trade union and the <b>1989 Round Table Talks</b>. Poland sought to modernise an existing state.</p>
+            <p>Driven by the <b>Solidarity</b> movement and the <b>1989 Round Table Talks</b>. Poland utilized its satellite status to modernise its existing statehood through negotiated reform.</p>
             <div class="quote-box">
                 "The shops had shortages, the queues were long... then came the Round Table. It was hope on the horizon." <br>— Polish Primary Witness
             </div>
-            <p><b>Economic Model:</b> Shock Therapy (Balcerowicz Plan).</p>
         </div>
 
-        <div id="latvia" class="content-pane">
+        <div id="latvia-analysis" class="content-pane analysis-pane">
             <h3>The Restorationist Path</h3>
-            <p>Driven by the <b>Singing Revolution</b>. Latvia sought to restore a state stolen in 1940. A total institutional break.</p>
+            <p>Driven by the <b>Singing Revolution</b> and the <b>Baltic Way</b>. Latvia pursued a total institutional break to restore the republic stolen during the 1940 Soviet occupation.</p>
             <div class="quote-box">
                 "The shops were truly empty... everything was on coupons. But the younger generation lives in paradise now and they don't know it." <br>— Latvian Primary Witness
             </div>
-            <p><b>Economic Model:</b> The Coupon Economy & Ruble Collapse.</p>
         </div>
     </div>
 </section>
 
-<section style="text-align: center;">
+<section id="presentation" style="text-align: center;">
     <h2>The Presentation Archive</h2>
-    <p>Our complete S6 History Research Project findings.</p>
-    <div style="background: #000; height: 400px; display: flex; align-items: center; justify-content: center; border: 1px solid #444;">
-        <p>[ EMBED YOUR POWERPOINT SLIDES HERE ]</p>
+    <p>Visualizing the collapse: Our complete S6 History Research Project slides.</p>
+    <div style="background: #000; padding: 20px; border: 1px solid #444; display: inline-block;">
+        <iframe src="https://eursc-my.sharepoint.com/personal/skrasttm_student_eursc_eu/_layouts/15/Doc.aspx?sourcedoc={9100e946-78cf-412d-b285-a566bc907b86}&amp;action=embedview&amp;wdAr=1.7777777777777777" width="800px" height="480px" frameborder="0"></iframe>
+    </div>
+</section>
+
+<section id="archives">
+    <h2 style="color: var(--accent); font-family: 'Bebas Neue'; letter-spacing: 2px;">PRIMARY SOURCE RECORDS</h2>
+    <p>Raw interview transcripts regarding the transition away from Soviet control.</p>
+    
+    <div class="toggle-btns">
+        <button class="toggle-btn active" onclick="showPane('poland', this, 'archive')">POLAND RECORD</button>
+        <button class="toggle-btn" onclick="showPane('latvia', this, 'archive')">LATVIA RECORD</button>
+    </div>
+
+    <div id="poland-archive" class="content-pane active archive-pane">
+        <div class="archive-scroll">
+            <p><strong>Subject:</strong> Male, resident of Poland | <strong>Topic:</strong> Transition from Satellite State</p>
+            <hr>
+            <p><strong class="q">1. Where were you living in the late 1980s, and what was life like under Soviet influence?</strong><br>
+            "I was in Poland. Life was defined by the oppression of the state and a complete lack of civil liberties. Everything was controlled—the economy, what you could say, where you could work. The shops had constant shortages and the queues were a daily struggle."</p>
+
+            <p><strong class="q">2. Do you remember specific events (protests, strikes) that signaled change?</strong><br>
+            "The Solidarity (Solidarność) movement was the center of everything. It wasn't just a union; it was a roar for freedom. It was the first time an independent group actually stood up to the Soviet Bloc."</p>
+
+            <p><strong class="q">3. How did people react when they realized the Soviet system was weakening?</strong><br>
+            "There was a shift in the air. People stopped being afraid. We realized that if we stood together, the state couldn't control all of us. The demand for civil liberties became impossible for them to ignore."</p>
+
+            <p><strong class="q">4. What do you remember about the moment your country moved away from Soviet control?</strong><br>
+            "The Round Table Talks (Okrągły Stół) in 1989. It was a massive turn in history. For the first time, our movement could negotiate directly with the communist government. It was 'hope on the horizon.'"</p>
+
+            <p><strong class="q">5. How did your daily life change immediately after the collapse?</strong><br>
+            "The 1989 elections changed everything. When Solidarity won, it felt like Poland was finally 'ours' again. We were being re-governed in a self-identified state model for the first time in decades."</p>
+
+            <p><strong class="q">6. Were there economic difficulties or new opportunities?</strong><br>
+            "Both. We implemented 'Shock Therapy' (The Balcerowicz Plan). It was chaotic. Prices rose out of control as we were suddenly exposed to global markets. goods were back in shops, but many lost their secure state jobs."</p>
+
+            <p><strong class="q">7. How did political changes affect your sense of national identity?</strong><br>
+            "We were redefining ourselves as a sovereign nation. We moved quickly to join NATO and the EU to secure our democracy. We weren't a subservient satellite anymore; we were Poland."</p>
+
+            <p><strong class="q">8. How did information spread, and did you trust those sources?</strong><br>
+            "During the soft censorship era, we learned to look for information elsewhere. We relied on illegal unions and the church. We knew how to read between the lines of the state propaganda."</p>
+
+            <p><strong class="q">9. Is there anything you would have done differently?</strong><br>
+            "The transition was a 'radical break.' Perhaps we could have prepared better for the massive inequality that followed. The exposure to the global economy was a shock that hit the working class very hard."</p>
+
+            <p><strong class="q">10. What do younger generations today misunderstand about that period?</strong><br>
+            "They see the economic gap today, but they don't understand the oppression we lived under. We traded the 'security' of a state job for the 'freedom' of a democratic nation. It was a necessary trade."</p>
+        </div>
+    </div>
+
+    <div id="latvia-archive" class="content-pane archive-pane">
+        <div class="archive-scroll">
+            <p><strong>Subject:</strong> Female, resident of Latvia | <strong>Topic:</strong> Restoration of the Occupied Republic</p>
+            <hr>
+               <p><strong>1. Where were you living in the late 1980s?</strong><br>
+        "I was living in the Latvian countryside, right near the Lithuanian border. Life was normal but strange; we were integrated into the USSR, but we always felt like we were just waiting for something to break."</p>
+
+        <p><strong>2. Do you remember specific events that signaled change?</strong><br>
+        "Yes, the Baltic Way in 1989. Two million people holding hands. That was the moment we knew the Soviet system couldn't stop us. Then the Barricades in 1991—protecting Riga with our bare hands."</p>
+
+        <p><strong>3. How did people react when the system weakened?</strong><br>
+        "There was a sense of collapse, but also relief. We saw the other republics starting to fall away, and we knew Latvia had to be next. It was a chain reaction."</p>
+
+        <p><strong>4. What do you remember about moving away from Soviet control?</strong><br>
+        "I remember when the others joined the CIS (Commonwealth of Independent States) and Latvia refused. We weren't 'joining' something new; we were leaving the old empire behind for good."</p>
+
+        <p><strong>5. How did daily life change immediately after?</strong><br>
+        "The economy collapsed. Everything was on coupons (*taloni*). Soap, sugar, even vodka was strictly rationed. The shops were truly empty; you would walk in and there was simply nothing to buy."</p>
+
+        <p><strong>6. Were there economic difficulties or new opportunities?</strong><br>
+        "Both. The collective farms (*kolhozi*) and sugar factories were liquidated. Many people lost their secure jobs instantly. But then privatization started, and those who were quick could start businesses."</p>
+
+        <p><strong>7. How did changes affect your sense of national identity?</strong><br>
+        "It was a 'cleaning' of our identity. We had to take exams on the Constitution and the anthem. We finally got our own passports and our own flag back. We weren't Soviet anymore; we were Latvian again."</p>
+
+        <p><strong>8. How did information spread, and did you trust it?</strong><br>
+        "Mostly through the radio and TV. During the revolution, we trusted them completely because they were finally telling the truth after years of propaganda. We would sit by the radio all night."</p>
+
+        <p><strong>9. Is there anything you would have done differently?</strong><br>
+        "I would have prepared for the bank collapse. Ilmārs (Grandpa) lost all his savings because they were in rubles in a state bank. I should have bought dollars or an apartment while I could."</p>
+
+        <p><strong>10. What do younger generations misunderstand about that period?</strong><br>
+        "You live in paradise now, but you don't know it (quote from her mother, who lived throughout WWII). You see the high prices or the inequality, but you don't understand the absolute chaos and the lack of basic freedom we had before. We traded security for sovereignty."</p>
+        </div>
     </div>
 </section>
 
 <footer>
-    <p>Research by Toms Valdemārs Skrastiņš & Szymon Musko</p>
+    <p>Research by Toms Valdemārs Skrastiņš & Szymon Musko | S6 History</p>
     <p>Academic Sources: Timothy Snyder, Zenonas Norkus, Pawel Bukowski.</p>
 </footer>
 
 <script>
-    function showPane(paneId, btn) {
-        // Hide all panes
-        document.querySelectorAll('.content-pane').forEach(p => p.classList.remove('active'));
-        // Show selected pane
-        document.getElementById(paneId).classList.add('active');
-        
-        // Update buttons
-        document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    function showPane(paneId, btn, type) {
+        const paneClass = type === 'analysis' ? '.analysis-pane' : '.archive-pane';
+        const targetId = type === 'analysis' ? paneId + '-analysis' : paneId + '-archive';
+        document.querySelectorAll(paneClass).forEach(p => p.classList.remove('active'));
+        document.getElementById(targetId).classList.add('active');
+        btn.parentElement.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
     }
 </script>
